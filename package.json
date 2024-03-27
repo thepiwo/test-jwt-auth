@@ -8,9 +8,13 @@
   "dependencies": {
     "@aeternity/aepp-sdk": "^13.2.1",
     "@aeternity/bip39": "^0.1.0",
+    "@matrix-org/olm": "^3.2.15",
     "asn1.js": "^5.4.1",
+    "base64url": "^3.0.1",
     "eckey-utils": "^0.7.14",
     "jose": "^5.2.2",
+    "matrix-js-sdk": "^31.4.0",
+    "tweetnacl": "^1.0.3",
     "tweetnacl-util": "^0.15.1"
   },
   "devDependencies": {
