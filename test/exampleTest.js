@@ -7,7 +7,7 @@ const {
     derivePathFromKey,
     getKeyPair,
     Encoding,
-    encode
+    encode, signJwt, MemoryAccount, unpackJwt, verifyJwt
 } = require("@aeternity/aepp-sdk");
 const {SignJWT, jwtVerify, importPKCS8, importJWK, exportJWK} = require('jose')
 const {subtle} = require('crypto').webcrypto;
@@ -119,5 +119,12 @@ describe('JWT Auth', () => {
         const verify = await jwtVerify(jwt, publicKey)
 
         console.log(verify)
+
+        const jwtsdk =await signJwt(payload, new MemoryAccount(naclKeyPair.secretKey))
+        console.log(jwtsdk)
+        console.log(await unpackJwt(jwtsdk))
+        console.log(await verifyJwt(jwtsdk, encode(naclKeyPair.publicKey, Encoding.AccountAddress)))
+        console.log(await verifyJwt(jwt, encode(naclKeyPair.publicKey, Encoding.AccountAddress)))
+        console.log(await await jwtVerify(jwtsdk, publicKey))
     })
 });
